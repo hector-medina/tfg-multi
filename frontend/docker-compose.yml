@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  frontend: 
+    build: .
+    ports:
+      - "8081:8081"
+    command: tail -f /dev/null
+    volumes:
+      - ./app:/srv/app
+    environment:
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.100.17
+      # - EXPO_USER=
+      # - EXPO_PASSWORD=
