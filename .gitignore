@@ -7,3 +7,6 @@ local_settings.py
 
 # Django Rest Framework
 *.sqlite3
+
+# MacOS files.
+.DS_Store
