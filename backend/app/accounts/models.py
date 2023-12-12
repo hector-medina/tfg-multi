@@ -3,10 +3,11 @@ from django.db import models
 
 
 class User(AbstractUser):
-
+    
+    email = models.EmailField(unique=True)
     phone = models.CharField(max_length=150, default=None, blank=True, null=True)
     dni = models.CharField(max_length=150, default=None, blank=True, null=True)
-    acceptsPrivacyPolicy = models.BooleanField(default=False)
+    acceptsPrivacyPolicy = models.BooleanField(default=True)
     
     def get_email(self):
         return self.email
