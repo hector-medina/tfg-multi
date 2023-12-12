@@ -17,9 +17,9 @@ export const fetchData = async ({url, data={}}) => {
         if (respuesta.ok) {
             return data_json;
         } else {
-            throw new Error(`${respuesta.status}: ${JSON.stringify(data_json)} `);
+            throw new Error(`${JSON.stringify(data_json)} `);
         }
     } catch (error) {
-      throw new Error(`Error ${error.message}`);
+      throw new Error(error.message);
     }
   };
