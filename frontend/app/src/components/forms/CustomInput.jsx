@@ -1,25 +1,34 @@
 import React from 'react';
-import { View, TextInput, StyleSheet} from 'react-native';
+import { View, TextInput, Text, StyleSheet} from 'react-native';
 import { Controller } from 'react-hook-form';
 
 
-const CustomInput = ({control, name, placeholder, secureTextEntry=false, keyboardType='default'}) => {
+const CustomInput = ({control, name, rules={}, placeholder, secureTextEntry=false, keyboardType='default'}) => {
 
     return (
       <View>
         <Controller 
             control={control}
             name={name}
-            render={( {field: {value, onChange, onBlur}} ) => (
-                <TextInput 
-                    style={styles.textInput}
-                    value={value} 
-                    onChangeText={onChange} 
-                    onBlur={onBlur}
-                    placeholder={placeholder}
-                    secureTextEntry={secureTextEntry}
-                    keyboardType={keyboardType}
-                />)
+            rules={rules}
+            render={( {field: {value, onChange, onBlur}, fieldState: {error}} ) => (
+
+                <View>
+                    <TextInput 
+                        style={[styles.textInput, error && styles.textInputError]}
+                        value={value} 
+                        onChangeText={onChange} 
+                        onBlur={onBlur}
+                        placeholder={placeholder}
+                        secureTextEntry={secureTextEntry}
+                        keyboardType={keyboardType}
+                        />
+                    { error && 
+                        (<Text style={styles.textError}>
+                            {error.message || 'Error'}
+                        </Text>)
+                    }
+                </View>)
             }
         />
       </View>
@@ -34,6 +43,12 @@ const styles = StyleSheet.create({
         borderBottomColor: '#f2f2f2', 
         borderBottomWidth: 2  
     },
+    textInputError: {
+        borderBottomColor: 'red',
+    },
+    textError: {
+        color: 'red',
+    }
 });
 
 export default CustomInput;
