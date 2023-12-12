@@ -1,15 +1,12 @@
 import React from "react";
 import { View, ImageBackground, Text, StyleSheet } from 'react-native';
-import { useNavigation } from "@react-navigation/native";
 
 import CustomButton from "../../components/buttons/CustomButton";
 import Link from "../../components/links/Link";
 
 const image = './../../../assets/images/landing.png';
 
-const LandingScreen = () => {
-
-    const navigation = useNavigation();
+const LandingScreen = ({navigation}) => {
 
     return (
         <ImageBackground source={require(image)} resizeMode="cover" style={styles.background}>
