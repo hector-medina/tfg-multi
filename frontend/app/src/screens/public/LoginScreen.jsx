@@ -1,30 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, ImageBackground, TouchableWithoutFeedback, Text, View } from 'react-native';
 import { Button, ThemeProvider } from '@rneui/themed';
-import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import BasePublicScreen from './BasePublicScreen';
 import CustomInput from '../../components/forms/CustomInput';  
 import theme from '../../theme';
+import Loading from '../../components/loadings/Loading';
 import Link from '../../components/links/Link';
+import { fetchData } from '../../api/utils/useFetch';
+import { NormalizeLogin } from '../../api/login/login';
+import ErrorModal from '../../components/modals/ErrorModal';
+import { save } from '../../api/utils/Token';
 
 const image = './../../../assets/images/form_background.png';
 
-const LoginScreen = () => {
-
-    const navigation = useNavigation();
+const LoginScreen = ({navigation}) => {
 
     const { control, handleSubmit, errors } = useForm();
 
-    const onLogin = (data) => {
-      console.log(data);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [ErrorModalVisible, setErrorModalVisible] = useState(false);
+    const [fetchErrors, setFetchErrors] = useState(null);
+
+    // Close error modal on pressed
+    const closeModal = () => {
+        setErrorModalVisible(false);
+    };
+
+    const onLogin = async (payload) => {  
+        setModalVisible(true);
+        const user = NormalizeLogin({data: payload});
+        try {
+            const url = '/login/';
+            const data = await fetchData({url: url, data: user, method:'POST',auth: false});
+            setModalVisible(false);
+            await save({key:'token',value:data.token});
+            navigation.navigate('home');
+          } catch (error) {
+            setModalVisible(false);
+            setErrorModalVisible(true)
+            setFetchErrors(error.message);
+        }
     }
 
     return (
        <BasePublicScreen>
             <ThemeProvider theme={theme}>
+                { fetchErrors != null && <ErrorModal title={'Error'} message={fetchErrors} modalVisible={ErrorModalVisible} onClose={closeModal}/>}
+                <Loading title={'Login'} message={'Logging in the system.'} modalVisible={modalVisible}/>
                 <View style={styles.image_container}>
                     <ImageBackground source={require(image)} resizeMode="cover" style={styles.image}>
                         <Text style={theme.components.Title.style}>COMMUNITY</Text>
@@ -36,8 +61,7 @@ const LoginScreen = () => {
                         <TouchableWithoutFeedback onPress={()=> navigation.goBack()}><Icon style={theme.components.Subtitle.icon} name='angle-left'/></TouchableWithoutFeedback>
                         <Text style={[theme.components.Subtitle.style, {flex: 1, textAlign: 'center', marginRight: 30}]}>Welcome to Community</Text>
                         </View>
-                        <Text></Text>
-                        <CustomInput name='email' placeholder='Email' control={control}  keyboardType='email-address' ></CustomInput>
+                        <CustomInput name='username' placeholder='Username' control={control} keyboardType='ascii-capable'></CustomInput>
                         <CustomInput name='password' placeholder='Password' control={control} secureTextEntry ></CustomInput>
                         <View>
                             <Button onPress={handleSubmit(onLogin)}>Login</Button>

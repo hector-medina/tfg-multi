@@ -41,7 +41,7 @@ const SignupScreen = ({navigation}) => {
         const user = NormalizeSignup({data: payload});
         try {
             const url = '/signup/';
-            const data = await fetchData({url: url, data: user});
+            const data = await fetchData({url: url, data: user, method:'POST', auth:false});
             setModalVisible(false);
             navigation.navigate('signupsuccessfully', {email: user.email});
           } catch (error) {
