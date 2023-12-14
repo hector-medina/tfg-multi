@@ -22,6 +22,7 @@ const CustomInput = ({control, name, rules={}, placeholder, secureTextEntry=fals
                         placeholder={placeholder}
                         secureTextEntry={secureTextEntry}
                         keyboardType={keyboardType}
+                        autoCorrect={false}
                         />
                     { error && 
                         (<Text style={styles.textError}>
