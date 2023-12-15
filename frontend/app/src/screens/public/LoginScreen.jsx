@@ -3,6 +3,7 @@ import { StyleSheet, ImageBackground, TouchableWithoutFeedback, Text, View } fro
 import { Button, ThemeProvider } from '@rneui/themed';
 import { useForm } from 'react-hook-form';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useDispatch } from 'react-redux';
 
 import BasePublicScreen from './BasePublicScreen';
 import CustomInput from '../../components/forms/CustomInput';  
@@ -12,7 +13,7 @@ import Link from '../../components/links/Link';
 import { fetchData } from '../../api/utils/useFetch';
 import { NormalizeLogin } from '../../api/login/login';
 import ErrorModal from '../../components/modals/ErrorModal';
-import { save } from '../../api/utils/Token';
+import { setAuthToken } from './../../../redux/actions/authActions';
 
 const image = './../../../assets/images/form_background.png';
 
@@ -23,6 +24,8 @@ const LoginScreen = ({navigation}) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [ErrorModalVisible, setErrorModalVisible] = useState(false);
     const [fetchErrors, setFetchErrors] = useState(null);
+
+    const dispatch = useDispatch();
 
     // Close error modal on pressed
     const closeModal = () => {
@@ -36,9 +39,10 @@ const LoginScreen = ({navigation}) => {
             const url = '/login/';
             const data = await fetchData({url: url, data: user, method:'POST',auth: false});
             setModalVisible(false);
-            await save({key:'token',value:data.token});
-            navigation.navigate('home');
+            dispatch(setAuthToken(data.token));
           } catch (error) {
+            console.log(error.message);
+            console.log(error);
             setModalVisible(false);
             setErrorModalVisible(true)
             setFetchErrors(error.message);
