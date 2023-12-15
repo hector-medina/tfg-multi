@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import mixins
 from django.urls import reverse
 from django.db import IntegrityError
+from rest_framework.permissions import IsAuthenticated
 
 
 from .serializers import UserSerializer, RegisterSerializer
@@ -13,6 +14,7 @@ from .models import User
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class UserRegistrationViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
