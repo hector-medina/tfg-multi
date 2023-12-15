@@ -4,16 +4,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // UI
 import { ThemeProvider } from "@rneui/themed"; 
-import theme from './src/theme';
+import theme from './../theme';
 // Utils
-import CustomOptions from './src/utils/CustomOptions';
+import CustomOptions from './../utils/CustomOptions';
 // Imports of public Screens
-import LandingScreen from './src/screens/public/LandingScreen';
-import LoginScreen from './src/screens/public/LoginScreen';
-import ForgotPasswordScreen from './src/screens/public/ForgotPasswordScreen';
-import SignupScreen from './src/screens/public/SignupScreen';
-import SignupsuccessfullyScreen from './src/screens/public/SignupsuccessfullyScreen';
-import TermsOfUseScreen from './src/screens/public/TermsofuseScreen'; 
+import LandingScreen from './../screens/public/LandingScreen';
+import LoginScreen from './../screens/public/LoginScreen';
+import ForgotPasswordScreen from './../screens/public/ForgotPasswordScreen';
+import SignupScreen from './../screens/public/SignupScreen';
+import SignupsuccessfullyScreen from './../screens/public/SignupsuccessfullyScreen';
+import TermsOfUseScreen from './../screens/public/TermsofuseScreen'; 
 
 
 const PublicStack = createNativeStackNavigator();
