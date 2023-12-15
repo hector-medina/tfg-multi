@@ -1,19 +1,17 @@
-import { getValueFor } from '../../api/utils/Token';
-
 const BACKEND_URL = 'http://192.168.100.17'; 
 
 const isObjectEmpty = (objectName) => {
     return Object.keys(objectName).length === 0
 }
 
-export const fetchData = async ({url, data={}, auth=true, method='GET'}) => {
+export const fetchData = async ({url, data={}, authToken=null, method='GET'}) => {
 
     const full_url = BACKEND_URL + url;
     
     const headers = {};
     headers['Content-Type'] = 'application/json';
-    if (auth) {
-        headers.Authorization = `Token ${await getValueFor({key: 'token'})}`;
+    if (authToken) {
+        headers.Authorization = `Token ${authToken}`;
     }
 
     const options = {};
@@ -25,7 +23,7 @@ export const fetchData = async ({url, data={}, auth=true, method='GET'}) => {
 
     try {
         const respuesta = await fetch(full_url,options);
-        const data_json = await respuesta.json();
+        const data_json = respuesta.json();
         if (respuesta.ok) {
             return data_json;
         } else {
