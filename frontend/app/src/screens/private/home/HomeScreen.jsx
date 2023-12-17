@@ -4,11 +4,14 @@ import { useSelector } from 'react-redux';
 
 import { fetchData } from '../../../api/utils/useFetch';
 import CardLarge from "../../../components/cards/CardLarge";
+import CardMedium from "../../../components/cards/CardMedium";
 import CardSmall from "../../../components/cards/CardSmall";
 
 const HomeScreen = ({navigation}) => {
 
     const authToken = useSelector((state) => state.auth.token);
+
+    const control = null;
 
     const getData = async () => {
         try{
@@ -23,7 +26,21 @@ const HomeScreen = ({navigation}) => {
    
     return (
         <ScrollView>
-             <View>
+            { control == null &&  
+                <CardMedium 
+                    title={'No Communities'} 
+                    texts={[
+                        'You have no communities associated in your profile, in order to see information of your community you have to setup your account first.',
+                        'You can do that by presing the user button below.'
+                    ]}
+                />
+            }
+
+            { control != null && 
+                (
+            <View>
+
+            <View>
                 <Text style={ styles.title }>Finance</Text>
                 <CardLarge 
                     url={'account'} 
@@ -32,7 +49,7 @@ const HomeScreen = ({navigation}) => {
                     income={'240.00'} 
                     expenses={'-97.11'} 
                     account_number={'2366'}
-                />
+                    />
 
                 <CardLarge 
                     url={'account'} 
@@ -40,7 +57,7 @@ const HomeScreen = ({navigation}) => {
                     balance={'260.00'} 
                     income={'40.00'} 
                     expenses={'-180.00'}
-                />
+                    />
             </View>
             
             <View>
@@ -61,6 +78,9 @@ const HomeScreen = ({navigation}) => {
                     <CardSmall url={'account'} title={'Polls'}/>
                 </View>
             </View>
+        </View>
+        )
+        }
         </ScrollView>
     );
 
