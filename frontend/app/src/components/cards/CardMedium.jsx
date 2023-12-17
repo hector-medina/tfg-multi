@@ -9,8 +9,8 @@ const CardMedium = ({title='', texts=[]}) => {
             <Text style={theme.components.Subtitle.style}>{title}</Text>
 
             {
-                texts.map( (t) => {
-                    return  <Text style={styles.text}>{t}</Text>;
+                texts.map( (t,k) => {
+                    return  <Text key={k} style={styles.text}>{t}</Text>;
                 })
 
             }
