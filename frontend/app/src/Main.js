@@ -8,8 +8,6 @@ const Main = () => {
 
     const authToken = useSelector((state) => state.auth.token);
 
-    console.log(authToken);
-
     return (
         authToken ? <PrivateRoutes/> : <PublicRoutes/>
     );
