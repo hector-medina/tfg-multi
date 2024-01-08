@@ -22,7 +22,7 @@ from rest_framework import routers
 from accounts.auth import CustomAuthToken
 from accounts.views import UserViewSet, UserRegistrationViewSet, UserImageViewSet
 from properties.views import PropertyViewSet
-from communities.views import NeighborhoodViewSet, BankAccountViewSet
+from communities.views import NeighborhoodViewSet, BankAccountViewSet, RecordViewSet,DebtViewSet
 
 router = routers.DefaultRouter()
 router.register(r"accounts", UserViewSet, basename="accounts")
@@ -31,6 +31,8 @@ router.register("signup", UserRegistrationViewSet, basename="signup")
 router.register(r"properties", PropertyViewSet, basename="properties")
 router.register(r"neighborhoods", NeighborhoodViewSet, basename="neighborhoods")
 router.register(r"bankaccounts", BankAccountViewSet, basename="bankaccounts")
+router.register(r"records", RecordViewSet, basename="records")
+router.register(r"debts", DebtViewSet, basename="debts")
 
 urlpatterns = [
     path("admin/", admin.site.urls),

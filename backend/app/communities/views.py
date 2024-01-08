@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
-from .serializers import NeighborhoodSerializer, BankAccountSerializer
-from .models import Neighborhood, BankAccount
+from .serializers import NeighborhoodSerializer, BankAccountSerializer, RecordSerializer, DebtSerializer
+from .models import Neighborhood, BankAccount, Record, Debt
 
 
 class NeighborhoodViewSet(viewsets.ModelViewSet):
@@ -21,3 +21,13 @@ class NeighborhoodViewSet(viewsets.ModelViewSet):
 class BankAccountViewSet(viewsets.ModelViewSet):
     queryset = BankAccount.objects.all()
     serializer_class = BankAccountSerializer
+
+
+class RecordViewSet(viewsets.ModelViewSet):
+    queryset = Record.objects.all()
+    serializer_class = RecordSerializer
+
+
+class DebtViewSet(viewsets.ModelViewSet):
+    queryset = Debt.objects.all()
+    serializer_class = DebtSerializer
