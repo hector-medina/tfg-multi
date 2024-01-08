@@ -8,5 +8,8 @@ local_settings.py
 # Django Rest Framework
 *.sqlite3
 
+# Backend media (images)
+backend/app/media
+
 # MacOS files.
 .DS_Store
