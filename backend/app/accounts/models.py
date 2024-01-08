@@ -1,5 +1,18 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.core.exceptions import ValidationError
+
+
+def validate_file_size(value):
+    filesize = value.size
+    
+    if filesize > 104857600:
+        raise ValidationError("The maximum file size that can be uploaded is 10MB")
+    else:
+        return value
+
+class UserImage(models.Model):
+    image = models.ImageField(upload_to='profile/', max_length=2000, validators=[validate_file_size])
 
 
 class User(AbstractUser):
@@ -8,6 +21,8 @@ class User(AbstractUser):
     phone = models.CharField(max_length=150, default=None, blank=True, null=True)
     dni = models.CharField(max_length=150, default=None, blank=True, null=True)
     acceptsPrivacyPolicy = models.BooleanField(default=True)
+    image = models.ForeignKey(UserImage, default=None, on_delete=models.SET_NULL, blank=True, null=True)
+    address = models.CharField(max_length=150, default=None, blank=True, null=True)
     
     def get_email(self):
         return self.email

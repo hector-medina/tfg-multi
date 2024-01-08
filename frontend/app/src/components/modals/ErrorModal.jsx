@@ -6,7 +6,17 @@ import CustomButton from "../buttons/CustomButton";
 
 const ErrorModal = ({title, message={}, modalVisible = true, onClose}) => {
 
-    const message_json = JSON.parse(message);
+    function isJSON(variable) {
+        try {
+          JSON.parse(variable);
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }
+
+
+    const message_json = isJSON(message) ? JSON.parse(message) : {Error: message};
 
     console.log(message_json);
 
@@ -27,7 +37,9 @@ const ErrorModal = ({title, message={}, modalVisible = true, onClose}) => {
                             </View>
                         );
                     })}
-                    <CustomButton onPressed={() => onClose()}>Dismiss</CustomButton>
+                    <View style={ styles.button_container}>
+                        <CustomButton size='xs' onPressed={() => onClose()}>Dismiss</CustomButton>
+                    </View>
                     </View>
                 </View>
             </Modal>
@@ -53,6 +65,9 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'normal',
         color: 'black'   
+    },
+    button_container: {
+        marginTop: 10
     }
 });
 

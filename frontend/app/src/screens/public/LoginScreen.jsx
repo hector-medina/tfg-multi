@@ -13,7 +13,7 @@ import Link from '../../components/links/Link';
 import { fetchData } from '../../api/utils/useFetch';
 import { NormalizeLogin } from '../../api/login/login';
 import ErrorModal from '../../components/modals/ErrorModal';
-import { setAuthToken } from './../../../redux/actions/authActions';
+import { setAuthToken, setUserId } from './../../../redux/actions/authActions';
 
 const image = './../../../assets/images/form_background.png';
 
@@ -40,6 +40,7 @@ const LoginScreen = ({navigation}) => {
             const data = await fetchData({url: url, data: user, method:'POST',auth: false});
             setModalVisible(false);
             dispatch(setAuthToken(data.token));
+            dispatch(setUserId(data.user_id));
           } catch (error) {
             console.log(error.message);
             console.log(error);

@@ -4,11 +4,13 @@ services:
   frontend: 
     build: .
     ports:
-      - "8081:8081"
-    command: tail -f /dev/null
+      - "19000:19000"
     volumes:
-      - ./app:/srv/app
+      - ./app/assets:/srv/app/assets
+      - ./app/redux:/srv/app/redux
+      - ./app/src:/srv/app/src
     environment:
       - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.100.17
+      - REACT_APP_BACKEND_URL=https://192.168.100.17:8080
       # - EXPO_USER=
       # - EXPO_PASSWORD=

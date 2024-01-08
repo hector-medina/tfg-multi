@@ -37,7 +37,7 @@ const theme = createTheme({
     },
     Subtitle: { 
      style: {
-      fontSize: 21, 
+      fontSize: 16, 
       fontWeight: 'bold', 
       alignSelf: 'center',
      },

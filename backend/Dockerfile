@@ -8,10 +8,13 @@ WORKDIR /srv
 # Copy the application code into the container
 COPY . .
 
+# Concede permisos de ejecución al script
+RUN chmod +x /srv/entrypoint.sh
+
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r /srv/app/requirements.txt
 
 # Set the command to run the application
-CMD [ "python", "/srv/app/manage.py", "runserver", "0.0.0.0:8080" ]
+CMD ["/srv/entrypoint.sh"]
 
 EXPOSE 8080

@@ -1,13 +1,46 @@
-from .models import User
+from .models import User, UserImage
 from rest_framework import serializers
 from django.db.transaction import atomic
 from django.contrib.auth import get_user_model
 
+from communities.serializers import NeighborhoodSerializer
+from properties.serializers import PropertySerializer
+
+
+class UserImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserImage
+        fields = ('id', 'image',)
+
 
 class UserSerializer(serializers.ModelSerializer):
+
+    communities = serializers.SerializerMethodField()
+    properties = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'password')
+        fields = ('id',
+                  'first_name',
+                  'last_name',
+                  'username',
+                  'email',
+                  'dni',
+                  'phone',
+                  'address',
+                  'communities',
+                  'properties',
+                  'image',)
+    
+    def get_communities(self, user):
+        communities_admin = user.communities_admin.all()
+        communities_president = user.communities_president.all()
+        communities = communities_admin | communities_president
+        return NeighborhoodSerializer(communities, many=True).data
+
+    def get_properties(self, user):
+        properties = user.owned.all()
+        return PropertySerializer(properties, many=True).data
 
 
 def must_be_true(value):
