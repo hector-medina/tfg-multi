@@ -3,7 +3,7 @@ import { View, TextInput, Text, StyleSheet} from 'react-native';
 import { Controller } from 'react-hook-form';
 
 
-const CustomInput = ({control, name, rules={}, placeholder, secureTextEntry=false, keyboardType='default'}) => {
+const CustomInput = ({editable=true, control, name, rules={}, placeholder, secureTextEntry=false, keyboardType='default'}) => {
 
     return (
       <View>
@@ -15,7 +15,7 @@ const CustomInput = ({control, name, rules={}, placeholder, secureTextEntry=fals
 
                 <View>
                     <TextInput 
-                        style={[styles.textInput, error && styles.textInputError]}
+                        style={[styles.textInput, error && styles.textInputError, !editable && styles.not_editable]}
                         value={value} 
                         onChangeText={onChange} 
                         onBlur={onBlur}
@@ -23,6 +23,7 @@ const CustomInput = ({control, name, rules={}, placeholder, secureTextEntry=fals
                         secureTextEntry={secureTextEntry}
                         keyboardType={keyboardType}
                         autoCorrect={false}
+                        editable = {editable}
                         />
                     { error && 
                         (<Text style={styles.textError}>
@@ -49,6 +50,9 @@ const styles = StyleSheet.create({
     },
     textError: {
         color: 'red',
+    },
+    not_editable: {
+        color: '#b2b2b2'
     }
 });
 

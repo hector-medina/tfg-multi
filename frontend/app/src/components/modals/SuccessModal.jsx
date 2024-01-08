@@ -4,41 +4,24 @@ import { Text, Modal, StyleSheet, View } from 'react-native';
 import theme from "../../theme";
 import CustomButton from "../buttons/CustomButton";
 
-const ErrorModal = ({title, message={}, modalVisible = true, onClose}) => {
-
-    function isJSON(variable) {
-        try {
-          JSON.parse(variable);
-          return true;
-        } catch (error) {
-          return false;
-        }
-      }
-
-
-    const message_json = isJSON(message) ? JSON.parse(message) : {Error: message};
-
-    console.log(message_json);
+const SuccessModal = ({message=[], modalVisible = true, onClose}) => {
 
     return (
         <View>
             <Modal transparent={true} visible={modalVisible} onRequestClose={() => onClose()}>
                 <View style={styles.card_container}>
                     <View style={[theme.components.Card.style]}>
-                    {title && <Text style={[theme.components.Subtitle.style, styles.title]}>{title}</Text>}
-                    {message && Object.keys(message_json).map((key) => {
-                        const item = message_json[key];
-                        const item_title = (key != 'non_field_errors') ? key.charAt(0).toUpperCase() + key.slice(1) : 'Error';
+                    <Text style={[theme.components.Subtitle.style, styles.title]}>Success!</Text>
+                    {message.map((paragraph, index) => {
                         return (
-                            <View style={styles.text_container} key={key}>
-                                <Text style={ [theme.components.Link.style]}>{item_title}:
-                                    <Text style={[styles.text]}> {item}</Text>
-                                </Text>
+                            <View style={styles.text_container} key={index}>
+                                <Text style={[styles.text]}>{paragraph}</Text>
                             </View>
                         );
-                    })}
+                    })
+                    }
                     <View style={ styles.button_container}>
-                        <CustomButton size='xs' onPressed={() => onClose()}>Dismiss</CustomButton>
+                        <CustomButton size='xs' onPressed={() => onClose()}>Got it</CustomButton>
                     </View>
                     </View>
                 </View>
@@ -71,4 +54,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ErrorModal;
+export default SuccessModal;
