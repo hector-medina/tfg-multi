@@ -146,7 +146,7 @@ const HomeScreen = ({navigation}) => {
                     <Text style={ styles.title }>Finance</Text>
                     <CardLarge 
                         url={'account'} 
-                        url_params={{bankaccount_id: bankAccount.id}}
+                        url_params={{bankaccount_id: bankAccount.id, community_id: communitySelected.id}}
                         title='Account' 
                         balance={bankAccount.balance.toFixed(2).toString()} 
                         income={bankAccount.income.toFixed(2).toString()}
@@ -156,6 +156,7 @@ const HomeScreen = ({navigation}) => {
 
                     <CardLarge 
                         url={'debt'} 
+                        url_params={{bankaccount_id: bankAccount.id, community_id: communitySelected.id}}
                         title='Debts' 
                         balance={bankAccount.total_debt.toFixed(2).toString()} 
                         income={bankAccount.decreased_debt.toFixed(2).toString()} 
