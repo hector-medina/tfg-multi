@@ -14,7 +14,9 @@ import CustomOptions from './../utils/CustomOptions';
 // Imports of private Screens
 import HomeScreen from './../screens/private/home/HomeScreen';
 import AccountScreen from '../screens/private/home/account/AccountScreen';
+import AddRecordScreen from '../screens/private/home/account/AddRecordScreen';
 import DebtScreen from '../screens/private/home/debt/DebtScreen';
+import AddDebtScreen from '../screens/private/home/debt/AddDebtScreen';
 import HomeIncidentScreen from '../screens/private/home/incident/HomeIncidentScreen';
 import AgreementScreen from '../screens/private/home/agreement/AgreementScreen';
 import UserScreen from './../screens/private/user/UserScreen';
@@ -41,7 +43,9 @@ function HomeStackScreen() {
     <HomeStack.Navigator initialRouteName='home'>
       <HomeStack.Screen name="home" component={HomeScreen} options={CustomOptions({title: 'Community'})}/>
       <HomeStack.Screen name="account" component={AccountScreen} options={CustomOptions({title: 'Account'})}/>
+      <HomeStack.Screen name="addrecord" component={AddRecordScreen} options={CustomOptions({title: 'Add record'})}/>
       <HomeStack.Screen name="debt" component={DebtScreen} options={CustomOptions({title: 'Debt'})}/>
+      <HomeStack.Screen name="adddebt" component={AddDebtScreen} options={CustomOptions({title: 'Add debt'})}/>
       <HomeStack.Screen name="homeincidents" component={HomeIncidentScreen} options={CustomOptions({title: 'Incidents'})}/>
       <HomeStack.Screen name="agreements" component={AgreementScreen} options={CustomOptions({title: 'Agreements'})}/>
     </HomeStack.Navigator>
