@@ -10,5 +10,6 @@ services:
       - ./app:/srv/app
     environment:
       - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.100.17
+      - REACT_APP_BACKEND_URL=https://192.168.100.17:8080
       # - EXPO_USER=
       # - EXPO_PASSWORD=

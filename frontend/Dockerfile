@@ -5,8 +5,11 @@ FROM node:21.2.0
 # Copy package.json and package-lock.json to the working directory
 COPY ./app /srv/app
 
-# # Install dependencies
-# RUN npm install
+# Working dir
+WORKDIR /srv/app
+
+# Install dependencies
+RUN npm install
 
 # # Copy the rest of the application code to the working directory
 # COPY . .
@@ -14,8 +17,6 @@ COPY ./app /srv/app
 # Expose the port on which the application will run
 EXPOSE 8081
 
-# Working dir
-WORKDIR /srv/app
 
 # Start the application
 CMD ["npx", "expo" ,"start"]
