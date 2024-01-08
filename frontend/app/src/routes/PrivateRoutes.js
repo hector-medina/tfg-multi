@@ -14,6 +14,9 @@ import CustomOptions from './../utils/CustomOptions';
 // Imports of private Screens
 import HomeScreen from './../screens/private/home/HomeScreen';
 import AccountScreen from '../screens/private/home/account/AccountScreen';
+import DebtScreen from '../screens/private/home/debt/DebtScreen';
+import HomeIncidentScreen from '../screens/private/home/incident/HomeIncidentScreen';
+import AgreementScreen from '../screens/private/home/agreement/AgreementScreen';
 import UserScreen from './../screens/private/user/UserScreen';
 import EditUserScreen from '../screens/private/user/EditUserScreen';
 import AddPropertyScreen from './../screens/private/user/property/AddPropertyScreen';
@@ -38,6 +41,9 @@ function HomeStackScreen() {
     <HomeStack.Navigator initialRouteName='home'>
       <HomeStack.Screen name="home" component={HomeScreen} options={CustomOptions({title: 'Community'})}/>
       <HomeStack.Screen name="account" component={AccountScreen} options={CustomOptions({title: 'Account'})}/>
+      <HomeStack.Screen name="debt" component={DebtScreen} options={CustomOptions({title: 'Debt'})}/>
+      <HomeStack.Screen name="homeincidents" component={HomeIncidentScreen} options={CustomOptions({title: 'Incidents'})}/>
+      <HomeStack.Screen name="agreements" component={AgreementScreen} options={CustomOptions({title: 'Agreements'})}/>
     </HomeStack.Navigator>
   );
 }
