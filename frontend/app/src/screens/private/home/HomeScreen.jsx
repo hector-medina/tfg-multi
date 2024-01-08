@@ -1,21 +1,24 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView,TouchableWithoutFeedback } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { useSelector } from 'react-redux';
 
 import { fetchData } from '../../../api/utils/useFetch';
 import CardLarge from "../../../components/cards/CardLarge";
 import CardMedium from "../../../components/cards/CardMedium";
 import CardSmall from "../../../components/cards/CardSmall";
+import CustomButton from "../../../components/buttons/CustomButton";
 
 const HomeScreen = ({navigation}) => {
 
     const authToken = useSelector((state) => state.auth.token);
 
+    const user_id = useSelector((state) => state.user.id);
+
     const control = null;
 
     const getData = async () => {
         try{
-            const url = '/accounts/';
+            const url = '/accounts/'+user_id+'/';
             const data = await fetchData({url: url, authToken: authToken});
             console.log(data);
         }
@@ -23,7 +26,7 @@ const HomeScreen = ({navigation}) => {
             console.log(error);
         }
     }
-   
+
     return (
         <ScrollView>
             { control == null &&  
@@ -33,7 +36,7 @@ const HomeScreen = ({navigation}) => {
                         'You have no communities associated in your profile, in order to see information of your community you have to setup your account first.',
                         'You can do that by presing the user button below.'
                     ]}
-                />
+                    />
             }
 
             { control != null && 
