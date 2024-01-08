@@ -15,6 +15,15 @@ import CustomOptions from './../utils/CustomOptions';
 import HomeScreen from './../screens/private/home/HomeScreen';
 import AccountScreen from '../screens/private/home/account/AccountScreen';
 import UserScreen from './../screens/private/user/UserScreen';
+import EditUserScreen from '../screens/private/user/EditUserScreen';
+import AddPropertyScreen from './../screens/private/user/property/AddPropertyScreen';
+import DetailPropertyScreen from './../screens/private/user/property/DetailPropertyScreen';
+import EditPropertyScreen from './../screens/private/user/property/EditPropertyScreen';
+import EditPropertyOwnerScreen from './../screens/private/user/property/EditPropertyOwnerScreen';
+import AddCommunityScreen from './../screens/private/user/community/AddCommunityScreen';
+import DetailCommunityScreen from '../screens/private/user/community/DetailCommunityScreen';
+import EditCommunityScreen from '../screens/private/user/community/EditCommunityScreen';
+import EditManagersScreen from '../screens/private/user/community/EditManagersScreen';
 import IncidentScreen from './../screens/private/incident/IncidentScreen';
 import MessagesScreen from './../screens/private/messages/MessagesScreen';
 import NotificationsScreen from './../screens/private/notifications/NotificationsScreen';
@@ -22,6 +31,7 @@ import NotificationsScreen from './../screens/private/notifications/Notification
 
 const PrivateTab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
+const UserStack = createNativeStackNavigator();
 
 function HomeStackScreen() {
   return (
@@ -29,6 +39,23 @@ function HomeStackScreen() {
       <HomeStack.Screen name="home" component={HomeScreen} options={CustomOptions({title: 'Community'})}/>
       <HomeStack.Screen name="account" component={AccountScreen} options={CustomOptions({title: 'Account'})}/>
     </HomeStack.Navigator>
+  );
+}
+
+function UserStackScreen(){
+  return (
+    <UserStack.Navigator initialRouteName='user'>
+      <UserStack.Screen name="user" component={UserScreen} options={CustomOptions({title: 'User'})}/>
+      <UserStack.Screen name="edituser" component={EditUserScreen} options={CustomOptions({title: 'Edit user'})}/>
+      <UserStack.Screen name="addproperty" component={AddPropertyScreen} options={CustomOptions({title: 'Add property'})}/>
+      <UserStack.Screen name="detailproperty" component={DetailPropertyScreen} options={CustomOptions({title: 'Detail property'})}/>
+      <UserStack.Screen name="editproperty" component={EditPropertyScreen} options={CustomOptions({title: 'Edit property'})}/>
+      <UserStack.Screen name="editpropertyowner" component={EditPropertyOwnerScreen} options={CustomOptions({title: 'Edit property owner'})}/>
+      <UserStack.Screen name="addcommunity" component={AddCommunityScreen} options={CustomOptions({title: 'Add community'})}/>
+      <UserStack.Screen name="detailcommunity" component={DetailCommunityScreen} options={CustomOptions({title: 'Detail community'})}/>
+      <UserStack.Screen name="editcommunity" component={EditCommunityScreen} options={CustomOptions({title: 'Edit community'})}/>
+      <UserStack.Screen name="editmanagers" component={EditManagersScreen} options={CustomOptions({title: 'Edit managers'})}/>
+    </UserStack.Navigator>
   );
 }
 
@@ -62,13 +89,13 @@ function PrivateRoutes(){
               />
 
               <PrivateTab.Screen 
-                name="user" 
-                component={UserScreen} 
+                name="userTab" 
+                component={UserStackScreen} 
                 options={{
                   headerStyle: styles.headerStyle,
                   headerTitleStyle: styles.headerTitleStyle,
                   headerTintColor: theme.lightColors.white,
-                  title:'User',
+                  headerShown: false,
                   tabBarLabel: 'User',
                   tabBarIcon: ({color, size}) => (
                     <Icon name="person" color={color} size={size} />
