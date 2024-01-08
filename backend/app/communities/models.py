@@ -25,6 +25,7 @@ class BankAccount(models.Model):
         bankAccount = '{} {}'.format(self.id, self.name)
         return bankAccount
 
+
 class Record(models.Model):
     transaction_date = models.DateField()
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -35,6 +36,7 @@ class Record(models.Model):
         record = '{} {}'.format(self.id, self.description)
         return record
 
+
 class Debt(models.Model):
     transaction_date = models.DateField()
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -42,5 +44,15 @@ class Debt(models.Model):
     bank_account = models.ForeignKey(BankAccount, on_delete=models.CASCADE, related_name='debts')
 
     def __str__(self):
-        record = '{} {}'.format(self.id, self.description)
-        return record
+        debt = '{} {}'.format(self.id, self.description)
+        return debt
+
+
+class Agreement(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    archivo_pdf = models.FileField(upload_to='agreements/')
+    neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, related_name='agreements')
+
+    def __str__(self):
+        return self.nombre

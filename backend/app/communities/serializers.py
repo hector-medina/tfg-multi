@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Neighborhood, BankAccount, Record, Debt
+from .models import Neighborhood, BankAccount, Record, Debt, Agreement
 from properties.serializers import PropertySerializer
 from django.db.models import Sum
 from django.utils import timezone
@@ -20,6 +20,17 @@ class NeighborhoodSerializer(serializers.ModelSerializer):
                   'bank_account',
                   'creation_date')
 
+class RecordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Record
+        fields = ('id', 'amount', 'description', 'bank_account', 'transaction_date')
+
+
+class DebtSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Debt
+        fields = '__all__'
+
 
 class BankAccountSerializer(serializers.ModelSerializer):
 
@@ -31,9 +42,13 @@ class BankAccountSerializer(serializers.ModelSerializer):
     increased_debt = serializers.SerializerMethodField()
     decreased_debt = serializers.SerializerMethodField()
 
+    records = serializers.SerializerMethodField()
+    debts = serializers.SerializerMethodField()
+    
     class Meta:
         model = BankAccount
-        fields = ('id', 'name', 'balance', 'expenses', 'number', 'income', 'total_debt', 'increased_debt', 'decreased_debt')
+        fields = ('id', 'name', 'balance', 'expenses', 'number', 'income', 
+                  'total_debt', 'increased_debt', 'decreased_debt', 'records', 'debts')
 
     def get_balance(self, obj):
         balance = obj.records.aggregate(total_amount=Sum('amount'))['total_amount']
@@ -95,14 +110,16 @@ class BankAccountSerializer(serializers.ModelSerializer):
             debt = 0.00
         return debt
 
+    def get_records(self, obj):
+        records = obj.records.all().order_by('-transaction_date')
+        return RecordSerializer(records, many=True).data
 
-class RecordSerializer(serializers.ModelSerializer):
+    def get_debts(self, obj):
+        records = obj.debts.all().order_by('-transaction_date')
+        return DebtSerializer(records, many=True).data
+
+
+class AgreementSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Record
-        fields = ('id', 'amount', 'description', 'bank_account', 'transaction_date')
-
-
-class DebtSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Debt
+        model = Agreement
         fields = '__all__'
