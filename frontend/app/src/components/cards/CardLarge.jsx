@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 
 import theme from '../../theme';
 
-const CardLarge = ({url, title, currency='€', balance, account_number=null, income='00.00', expenses='00.00'}) => {
+const CardLarge = ({url, url_params=null, title, currency='€', balance, account_number=null, income='00.00', expenses='00.00'}) => {
     
     const navigation = useNavigation();
 
     return (
-        <TouchableWithoutFeedback onPress={ () => navigation.navigate(url)}>
+        <TouchableWithoutFeedback onPress={ () => navigation.navigate(url, url_params)}>
             <View style={[theme.components.Card.style, styles.card]}>
                 <View style={ styles.card_inner_container }>
                     <View style={ styles.card_main_data_container }>
