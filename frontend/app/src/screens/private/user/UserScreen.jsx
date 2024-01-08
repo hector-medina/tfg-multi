@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { Text, View, Button, Image, StyleSheet, ScrollView,TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
-import { removeAuthToken } from "../../../../redux/actions/authActions";
+import { removeAuthToken, removeUserId } from "../../../../redux/actions/authActions";
 import theme from "./../../../../src/theme";
 import CustomButton from "./../../../../src/components/buttons/CustomButton";
 import CardSmall from "../../../components/cards/CardSmall";
@@ -96,6 +96,7 @@ const UserScreen = ({navigation}) => {
 
     function logout(){
         dispatch(removeAuthToken());
+        dispatch(removeUserId());
     }
 
     const dissmiss = () => {

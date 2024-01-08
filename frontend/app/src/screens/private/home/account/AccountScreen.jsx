@@ -1,9 +1,12 @@
 import React from "react";
 import { Text } from "react-native";
 
-const AccountScreen = () => {
+const AccountScreen = ({route, navigations}) => {
+
+    const {bankaccount_id} = route.params;
+
     return (
-        <Text>AccountScreen</Text>
+        <Text>AccountScreen {bankaccount_id}</Text>
     );
 }
 
