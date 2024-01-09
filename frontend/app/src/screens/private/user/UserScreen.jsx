@@ -79,7 +79,6 @@ const UserScreen = ({navigation}) => {
                 name: "profile_"+user.id+".jpg"
             });
             const image_data = await fetchData({url: url, method: 'POST', multipart: true, formData: formdata, authToken: authToken});
-            console.log('esto es el data'+image_data);
             console.log(image_data);
             
             url = '/accounts/'+user.id+'/';
