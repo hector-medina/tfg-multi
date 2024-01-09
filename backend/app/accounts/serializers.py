@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 
 from communities.serializers import NeighborhoodSerializer
 from properties.serializers import PropertySerializer
+from communities.models import Neighborhood
 
 
 class UserImageSerializer(serializers.ModelSerializer):
@@ -34,9 +35,10 @@ class UserSerializer(serializers.ModelSerializer):
     
     def get_communities(self, user):
         communities_admin = user.communities_admin.all()
-        communities_president = user.communities_president.all()
-        communities = communities_admin | communities_president
-        return NeighborhoodSerializer(communities, many=True).data
+        communities_president = user.communities_president.all()        
+        communities_owner = Neighborhood.objects.filter(properties__in=user.owned.all())
+        communities = communities_admin | communities_president | communities_owner
+        return NeighborhoodSerializer(communities.distinct(), many=True).data
 
     def get_properties(self, user):
         properties = user.owned.all()

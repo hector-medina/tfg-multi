@@ -9,10 +9,10 @@ export const fetchData = async ({url, data={}, multipart=false, formData=null, a
     const full_url = BACKEND_URL + url;
     
     const headers = {};
-    if(!multipart){
-        headers['Content-Type'] = 'application/json';
-    } else {
+    if(multipart){
         headers['Content-Type'] = 'multipart/form-data';
+    } else {
+        headers['Content-Type'] = 'application/json';
     }
 
     if (authToken) {
@@ -23,7 +23,7 @@ export const fetchData = async ({url, data={}, multipart=false, formData=null, a
     options.headers = headers;
     options.method = method;
     
-    if(!multipart && !isObjectEmpty(data)){
+    if(!isObjectEmpty(data)){
         options.body = JSON.stringify(data);
     }
 
@@ -39,6 +39,7 @@ export const fetchData = async ({url, data={}, multipart=false, formData=null, a
             }
             return data_json;
         } else {
+            data_json = await respuesta.json();
             throw new Error(`${JSON.stringify(data_json)} `);
         }
     } catch (error) {

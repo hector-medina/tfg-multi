@@ -3,7 +3,7 @@ import { View, TextInput, Text, StyleSheet} from 'react-native';
 import { Controller } from 'react-hook-form';
 
 
-const CustomInput = ({editable=true, control, name, rules={}, placeholder, secureTextEntry=false, keyboardType='default'}) => {
+const CustomInput = ({numberOfLines=1,multiline=false, editable=true, control, name, rules={}, placeholder, secureTextEntry=false, keyboardType='default'}) => {
 
     return (
       <View>
@@ -15,11 +15,18 @@ const CustomInput = ({editable=true, control, name, rules={}, placeholder, secur
 
                 <View>
                     <TextInput 
-                        style={[styles.textInput, error && styles.textInputError, !editable && styles.not_editable]}
+                        style={[styles.textInput,
+                                error && styles.textInputError, 
+                                !editable && styles.not_editable,
+                                multiline && 
+                                {height: numberOfLines*20}
+                            ]}
                         value={value} 
                         onChangeText={onChange} 
                         onBlur={onBlur}
                         placeholder={placeholder}
+                        multiline={multiline}
+                        numberOfLines={numberOfLines}
                         secureTextEntry={secureTextEntry}
                         keyboardType={keyboardType}
                         autoCorrect={false}

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import theme from '../../theme';
 
-const CardLarge = ({url, url_params=null, title, currency='€', balance, account_number=null, income='00.00', expenses='00.00'}) => {
+const CardLargeMinimal = ({url, url_params=null, currency='€', balance, account_number=null, income='00.00', expenses='00.00'}) => {
     
     const navigation = useNavigation();
 
@@ -14,13 +14,12 @@ const CardLarge = ({url, url_params=null, title, currency='€', balance, accoun
             <View style={[theme.components.Card.style, styles.card]}>
                 <View style={ styles.card_inner_container }>
                     <View style={ styles.card_main_data_container }>
-                        <Text style={ styles.subtitle }>{title}</Text>
                         <View style={ styles.balance_container }>
                             <Text style={ styles.currency }>{currency} </Text>
                             <Text style={ styles.balance_int }>{balance.split('.')[0]}</Text>
                             <Text style={ styles.balance_cents }>.{balance.split('.')[1]}</Text>
                         </View>
-                        <Text style={ styles.account_number }> {account_number && '.... '+account_number}</Text>
+                        <Text style={ styles.account_number }> {account_number}</Text>
                     </View>
                     <View style={ styles.movement_container}>
                         <View style={ styles.movement_inner_container}>
@@ -35,9 +34,6 @@ const CardLarge = ({url, url_params=null, title, currency='€', balance, accoun
                                 <Text style={ styles.expenses_cents }>.{expenses.split('.')[1]}</Text>
                             </View>
                         </View>
-                        <View style={ styles.icon_conteiner}>
-                            <Icon style={theme.components.Subtitle.icon} name='angle-right'/>
-                        </View>
                     </View>
                 </View>
             </View>
@@ -48,14 +44,14 @@ const CardLarge = ({url, url_params=null, title, currency='€', balance, accoun
 
 const styles = StyleSheet.create({
     subtitle: { color: 'gray', fontSize: 18, fontWeight: 'bold' },
-    card: { borderRadius:15, marginBottom: 20 },
+    card: { borderRadius:15, marginBottom: 20, marginHorizontal:10, marginTop:20 },
     card_inner_container: { flex: 1, flexDirection: 'row' },
-    card_main_data_container: { flex: 0.6 },
+    card_main_data_container: { flex: 0.8 },
     balance_container: {flexDirection:'row', alignItems: 'baseline', marginLeft: 5},
     currency: { color: 'black', fontSize: 16, fontWeight: 'bold' },
     balance_int: { color: 'black', fontSize: 22, fontWeight: 'bold' },
     balance_cents: { color: 'black', fontSize: 16, fontWeight: 'bold'},
-    account_number: { color: 'gray', fontSize: 16, marginLeft: 10, marginVertical:5},
+    account_number: { color: 'gray', fontSize: 14, marginLeft: 10, marginVertical:5},
     movement_container: { flex: 0.4, justifyContent:'flex-end' ,flexDirection: 'row', },
     movement_inner_container: {justifyContent: 'center'},
     income: {flexDirection: 'row', alignItems: 'baseline', marginVertical: 2.5},
@@ -69,4 +65,4 @@ const styles = StyleSheet.create({
     icon_conteiner: {marginLeft: 10,justifyContent: 'center'},
 });
 
-export default CardLarge;
+export default CardLargeMinimal;

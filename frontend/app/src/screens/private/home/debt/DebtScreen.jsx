@@ -12,17 +12,17 @@ import ErrorModal from "../../../../components/modals/ErrorModal";
 import CardLargeMinimal from "../../../../components/cards/CardLargeMinimal";
 import CardSmall from "../../../../components/cards/CardSmall";
 
-const AccountScreen = ({route, navigation}) => {
+const DebtScreen = ({route, navigation}) => {
     LogBox.ignoreAllLogs()
     const {bankaccount_id, community_id} = route.params;
     const authToken = useSelector((state) => state.auth.token);
     const user_id =  useSelector((state) => state.user.id);
     const [bankAccount, setBankAccount] = useState({
         id: 0, number: '', balance: 0.00, income: 0.00, expenses: 0.00, 
-        total_debt: 0.00, increased_debt: 0.00, decreased_debt: 0.00, records: []});
+        total_debt: 0.00, increased_debt: 0.00, decreased_debt: 0.00, debts: []});
     const [community, setCommunity] = useState({
         id: 0, name: '', admin: 0, president: 0});
-    const [records, setRecords] = useState([]);
+    const [debts, setDebts] = useState([]);
 
     useEffect(() => {
         if (user_id !== null && authToken !== null ) {
@@ -69,7 +69,7 @@ const AccountScreen = ({route, navigation}) => {
                 <Text style={styles.data}> {item.transaction_date}</Text>
             </View>
             <View style={{justifyContent: 'center'}}>
-                <Text style={[styles.amount_positive, item.amount < 0 && styles.amount_negative]}> € {item.amount}</Text>
+                <Text style={[styles.amount_positive, item.amount >= 0 && styles.amount_negative]}> € {item.amount}</Text>
             </View>
          </View>
         );
@@ -78,22 +78,21 @@ const AccountScreen = ({route, navigation}) => {
     return (
         <ScrollView>
             <CardLargeMinimal 
-                balance={bankAccount.balance.toFixed(2).toString()} 
-                income={bankAccount.income.toFixed(2).toString()}
-                expenses={bankAccount.expenses.toFixed(2).toString()} 
-                account_number={bankAccount.number}
+                balance={bankAccount.total_debt.toFixed(2).toString()} 
+                income={bankAccount.decreased_debt.toFixed(2).toString()}
+                expenses={bankAccount.increased_debt.toFixed(2).toString()} 
                 />
             <View style={{flexDirection: 'row',justifyContent: 'space-between', alignItems: 'center',marginHorizontal: 20, marginBottom: 20}}>
-                <Text style={{color: 'gray', fontWeight: 'bold', fontSize: 20}}>Records</Text>
+                <Text style={{color: 'gray', fontWeight: 'bold', fontSize: 20}}>Debts</Text>
                 {(user_id == community.admin || user_id == community.president )?
-                 <CustomButton onPressed={() => {navigation.navigate('addrecord', {bankaccount_id: bankaccount_id})}} size='xs'>add</CustomButton>
+                 <CustomButton onPressed={() => {navigation.navigate('adddebt', {bankaccount_id: bankaccount_id})}} size='xs'>add</CustomButton>
                  : null
                 }
             </View>
 
             <View style={[theme.components.Card.style, styles.card]}>            
                 <FlatList
-                    data={bankAccount.records}
+                    data={bankAccount.debts}
                     renderItem={itemList}
                     keyExtractor={item => item.id}
                     ItemSeparatorComponent={Separador}
@@ -125,4 +124,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AccountScreen;
+export default DebtScreen;
