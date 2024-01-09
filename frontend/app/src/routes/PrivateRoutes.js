@@ -17,8 +17,10 @@ import AccountScreen from '../screens/private/home/account/AccountScreen';
 import AddRecordScreen from '../screens/private/home/account/AddRecordScreen';
 import DebtScreen from '../screens/private/home/debt/DebtScreen';
 import AddDebtScreen from '../screens/private/home/debt/AddDebtScreen';
-import HomeIncidentScreen from '../screens/private/home/incident/HomeIncidentScreen';
 import AgreementScreen from '../screens/private/home/agreement/AgreementScreen';
+import AddAgreementScreen from '../screens/private/home/agreement/AddAgreementScreen';
+import DetailAgreementScreen from '../screens/private/home/agreement/DetailAgreementScreen';
+import AgreementFileViewerScreen from '../screens/private/home/agreement/AgreementFileViewerScreen';
 import UserScreen from './../screens/private/user/UserScreen';
 import EditUserScreen from '../screens/private/user/EditUserScreen';
 import AddPropertyScreen from './../screens/private/user/property/AddPropertyScreen';
@@ -29,7 +31,6 @@ import AddCommunityScreen from './../screens/private/user/community/AddCommunity
 import DetailCommunityScreen from '../screens/private/user/community/DetailCommunityScreen';
 import EditCommunityScreen from '../screens/private/user/community/EditCommunityScreen';
 import EditManagersScreen from '../screens/private/user/community/EditManagersScreen';
-import IncidentScreen from './../screens/private/incident/IncidentScreen';
 import MessagesScreen from './../screens/private/messages/MessagesScreen';
 import NotificationsScreen from './../screens/private/notifications/NotificationsScreen';
 
@@ -46,8 +47,10 @@ function HomeStackScreen() {
       <HomeStack.Screen name="addrecord" component={AddRecordScreen} options={CustomOptions({title: 'Add record'})}/>
       <HomeStack.Screen name="debt" component={DebtScreen} options={CustomOptions({title: 'Debt'})}/>
       <HomeStack.Screen name="adddebt" component={AddDebtScreen} options={CustomOptions({title: 'Add debt'})}/>
-      <HomeStack.Screen name="homeincidents" component={HomeIncidentScreen} options={CustomOptions({title: 'Incidents'})}/>
       <HomeStack.Screen name="agreements" component={AgreementScreen} options={CustomOptions({title: 'Agreements'})}/>
+      <HomeStack.Screen name="addagreement" component={AddAgreementScreen} options={CustomOptions({title: 'Add agreements'})}/>
+      <HomeStack.Screen name="detailagreement" component={DetailAgreementScreen} options={CustomOptions({title: 'Detail agreements'})}/>
+      <HomeStack.Screen name="agreementfileviewer" component={AgreementFileViewerScreen} options={CustomOptions({title: 'Agremment file viewer'})}/>
     </HomeStack.Navigator>
   );
 }
@@ -109,21 +112,6 @@ function PrivateRoutes(){
                   tabBarLabel: 'User',
                   tabBarIcon: ({color, size}) => (
                     <Icon name="person" color={color} size={size} />
-                  ),
-                }}
-              />
-
-              <PrivateTab.Screen 
-                name="incident" 
-                component={IncidentScreen} 
-                options={{
-                  headerStyle: styles.headerStyle,
-                  headerTitleStyle: styles.headerTitleStyle,
-                  headerTintColor: theme.lightColors.white,
-                  title:'Incident',
-                  tabBarLabel: 'Incident',
-                  tabBarIcon: ({color, size}) => (
-                    <Icon name="add" color={color} size={size} />
                   ),
                 }}
               />
