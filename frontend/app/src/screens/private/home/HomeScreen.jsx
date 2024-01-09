@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text, StyleSheet, ScrollView, Modal, View } from "react-native";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from "../../../api/utils/useFetch";
 import CustomButton from "../../../components/buttons/CustomButton";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -14,6 +14,7 @@ import CardSmall from "../../../components/cards/CardSmall";
 
 
 const HomeScreen = ({navigation}) => {
+    const dispatch = useDispatch();
     const authToken = useSelector((state) => state.auth.token);
     const user_id =  useSelector((state) => state.user.id);
 
@@ -167,7 +168,6 @@ const HomeScreen = ({navigation}) => {
                     <Text style={styles.title}>Reports</Text>
                     <View style={ [styles.small_card_container, styles.separator] }>
                         <CardSmall url={'agreements'} url_params={{ community_id: communitySelected.id }} title={'Agreements'}/>
-                        <CardSmall url={'homeincidents'} url_params={{ community_id: communitySelected.id }} title={'Incidents'}/>
                     </View>
                 </View>
             </View>
@@ -179,7 +179,7 @@ const HomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     title: {color: 'gray', fontSize: 25, fontWeight: 'bold', marginVertical: 10, marginHorizontal: 25},
-    small_card_container: {flexDirection: 'row', marginHorizontal: 20},
+    small_card_container: {marginHorizontal: 20},
     separator: {marginBottom: 10},
     icon_navbar: {fontSize: 18, color: '#4BC29C'},
     modal_container: {
