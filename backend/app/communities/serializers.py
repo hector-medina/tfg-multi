@@ -5,9 +5,16 @@ from django.db.models import Sum
 from django.utils import timezone
 
 
+class AgreementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Agreement
+        fields = '__all__'
+
+
 class NeighborhoodSerializer(serializers.ModelSerializer):
 
     properties = PropertySerializer(many=True, read_only=True)
+    agreements = AgreementSerializer(many=True, read_only=True)
 
     class Meta:
         model = Neighborhood
@@ -18,7 +25,8 @@ class NeighborhoodSerializer(serializers.ModelSerializer):
                   'address',
                   'properties',
                   'bank_account',
-                  'creation_date')
+                  'creation_date',
+                  'agreements')
 
 class RecordSerializer(serializers.ModelSerializer):
     class Meta:
@@ -48,7 +56,8 @@ class BankAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = BankAccount
         fields = ('id', 'name', 'balance', 'expenses', 'number', 'income', 
-                  'total_debt', 'increased_debt', 'decreased_debt', 'records', 'debts')
+                  'total_debt', 'increased_debt', 'decreased_debt', 'records', 
+                  'debts')
 
     def get_balance(self, obj):
         balance = obj.records.aggregate(total_amount=Sum('amount'))['total_amount']
@@ -117,9 +126,3 @@ class BankAccountSerializer(serializers.ModelSerializer):
     def get_debts(self, obj):
         records = obj.debts.all().order_by('-transaction_date')
         return DebtSerializer(records, many=True).data
-
-
-class AgreementSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Agreement
-        fields = '__all__'
