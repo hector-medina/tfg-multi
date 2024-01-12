@@ -104,8 +104,6 @@ const HomeScreen = ({navigation}) => {
         setFetchErrors(null);
     }
 
-    console.log(bankAccount)
-
     return (
         <ScrollView>
             <Modal transparent={true} visible={communitySelectModal} onRequestClose={() => {setCommunitySelectModal(false)}}>
