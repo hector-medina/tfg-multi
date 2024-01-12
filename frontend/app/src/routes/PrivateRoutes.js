@@ -32,7 +32,10 @@ import DetailCommunityScreen from '../screens/private/user/community/DetailCommu
 import EditCommunityScreen from '../screens/private/user/community/EditCommunityScreen';
 import EditManagersScreen from '../screens/private/user/community/EditManagersScreen';
 import MessagesScreen from './../screens/private/messages/MessagesScreen';
+import DetailMessagesScreen from './../screens/private/messages/DetailMessagesScreen';
 import NotificationsScreen from './../screens/private/notifications/NotificationsScreen';
+import AddNotificationScreen from './../screens/private/notifications/AddNotificationScreen';
+import DetailNotificationsScreen from './../screens/private/notifications/DetailNotificationsScreen';
 
 
 const PrivateTab = createBottomTabNavigator();
@@ -68,6 +71,26 @@ function UserStackScreen(){
       <UserStack.Screen name="detailcommunity" component={DetailCommunityScreen} options={CustomOptions({title: 'Detail community'})}/>
       <UserStack.Screen name="editcommunity" component={EditCommunityScreen} options={CustomOptions({title: 'Edit community'})}/>
       <UserStack.Screen name="editmanagers" component={EditManagersScreen} options={CustomOptions({title: 'Edit managers'})}/>
+    </UserStack.Navigator>
+  );
+}
+
+
+function MessagesStackScreen(){
+  return (
+    <UserStack.Navigator initialRouteName='messages'>
+      <UserStack.Screen name="messages" component={MessagesScreen} options={CustomOptions({title: 'Messages'})}/>
+      <UserStack.Screen name="detailmessages" component={DetailMessagesScreen} options={CustomOptions({title: 'Detail messages'})}/>
+    </UserStack.Navigator>
+  );
+}
+
+function NotificationsStackScreen(){
+  return (
+    <UserStack.Navigator initialRouteName='notifications'>
+      <UserStack.Screen name="notifications" component={NotificationsScreen} options={CustomOptions({title: 'Notifications'})}/>
+      <UserStack.Screen name="detailnotifications" component={DetailNotificationsScreen} options={CustomOptions({title: 'Detail notifications'})}/>
+      <UserStack.Screen name="addnotification" component={AddNotificationScreen} options={CustomOptions({title: 'Add notification'})}/>
     </UserStack.Navigator>
   );
 }
@@ -117,33 +140,33 @@ function PrivateRoutes(){
               />
 
               <PrivateTab.Screen 
-                name="messages" 
-                component={MessagesScreen} 
+                name="messagesTab" 
+                component={MessagesStackScreen} 
                 options={{
                   headerStyle: styles.headerStyle,
                   headerTitleStyle: styles.headerTitleStyle,
                   headerTintColor: theme.lightColors.white,
-                  title:'Messages',
                   tabBarLabel: 'Messages',
+                  headerShown: false,
                   tabBarIcon: ({color, size}) => (
                     <Icon name="chatbubbles" color={color} size={size} />
-                  ),
-                }}
-              />
+                    ),
+                  }}
+                  />
 
               <PrivateTab.Screen 
-                name="notifications" 
-                component={NotificationsScreen} 
+                name="notificationsTab" 
+                component={NotificationsStackScreen} 
                 options={{
                   headerStyle: styles.headerStyle,
                   headerTitleStyle: styles.headerTitleStyle,
                   headerTintColor: theme.lightColors.white,
                   title:'Notifications',
+                  headerShown: false,
                   tabBarLabel: 'Notifications',
                   tabBarIcon: ({color, size}) => (
                     <Icon name="notifications" color={color} size={size} />
                   ),
-                  tabBarBadge:2
                 }}              
               />
           </PrivateTab.Navigator>
