@@ -41,3 +41,11 @@ class DebtViewSet(viewsets.ModelViewSet):
 class AgreementViewSet(viewsets.ModelViewSet):
     queryset = Agreement.objects.all()
     serializer_class = AgreementSerializer
+
+
+class NeighborhoodByManagerViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = NeighborhoodSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs.get('user_id')
+        return Neighborhood.objects.filter(admin=user_id) | Neighborhood.objects.filter(president=user_id)
