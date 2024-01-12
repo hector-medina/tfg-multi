@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {Text, View, Button, ScrollView, StyleSheet} from "react-native";
-import {Picker} from '@react-native-picker/picker';
-import { useForm, Controller } from 'react-hook-form';
+import {Text, View, ScrollView, StyleSheet} from "react-native";
+import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { fetchData } from "../../../../api/utils/useFetch";
 import CustomButton from "../../../../components/buttons/CustomButton";
@@ -9,7 +8,6 @@ import theme from "../../../../theme";
 import Loading from "../../../../components/loadings/Loading";
 import ErrorModal from "../../../../components/modals/ErrorModal";
 import SuccessModal from "../../../../components/modals/SuccessModal";
-
 import CustomPicker from "../../../../components/forms/CustomPicker";
 
 const EditManagersScreen = ({route, navigation}) => {

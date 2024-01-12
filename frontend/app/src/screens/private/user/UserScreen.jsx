@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Text, View, Button, Image, StyleSheet, ScrollView,TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import { Text, View, Image, StyleSheet, ScrollView,TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { removeAuthToken, removeUserId } from "../../../../redux/actions/authActions";
 import theme from "./../../../../src/theme";
