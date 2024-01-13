@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 const DetailAgreementScreen = ({route, navigation}) => {
 
-    const {agreement_id, agreement_name, agreement_description, agreement_creation_date, agreement_pdf_file, } = route.params;
+    const {admin, president, agreement_id, agreement_name, agreement_description, agreement_creation_date, agreement_pdf_file, } = route.params;
     const authToken = useSelector((state) => state.auth.token);
     const user_id = useSelector((state) => state.user.id);
     const [modalVisible, setModalVisible] = useState(false);
@@ -27,11 +27,11 @@ const DetailAgreementScreen = ({route, navigation}) => {
         "Your agreement has been deleted successfully."
     ]
 
-    const confirmDeleteCommunity = async () => {
+    const confirmDeleteAgreement = async () => {
         setConfirmDeleteModalVisible(true);
     }
     
-    const deleteCommunity = async () => {
+    const deleteAgreement = async () => {
         setConfirmDeleteModalVisible(false);
         setModalVisible(true);
         try {
@@ -80,7 +80,7 @@ const DetailAgreementScreen = ({route, navigation}) => {
 
         <Loading 
             title={'Creating'} 
-            message={'Your community is processing.'} 
+            message={'Your record is processing.'} 
             modalVisible={modalVisible}/>
 
         <View style={ [theme.components.Card.style, styles.title] }>
@@ -111,14 +111,14 @@ const DetailAgreementScreen = ({route, navigation}) => {
                 </CustomButton>
             </View>
         </View>
-        { user_id == 1 &&
+        { (user_id == admin || user_id == president ) &&
         <View style={ [theme.components.Card.style, styles.title] }>
             <Text style={ [theme.components.Subtitle.style, styles.danger] }>Danger zone:</Text>
 
             <Text style={ [theme.components.Subtitle.style, styles.text] }>Press the following button for deleting this agreement:</Text>
             
             <View style={styles.button}>
-                <CustomButton size='xs' danger onPressed={confirmDeleteCommunity}>Delete agreement</CustomButton>
+                <CustomButton size='xs' danger onPressed={confirmDeleteAgreement}>Delete agreement</CustomButton>
             </View>
         </View>}
         </ScrollView>

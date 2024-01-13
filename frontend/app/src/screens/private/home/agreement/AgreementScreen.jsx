@@ -62,7 +62,8 @@ const AgreementScreen = ({route, navigation}) => {
                 <TouchableOpacity onPress={() => {
                     navigation.navigate(
                         'detailagreement', 
-                        {
+                        {   admin: community.admin,
+                            president: community.president,
                             agreement_id: item.id,
                             agreement_name: item.name,
                             agreement_description: item.description,

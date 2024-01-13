@@ -111,7 +111,7 @@ const HomeScreen = ({navigation}) => {
                     <View style={[theme.components.Card.style]}>
                         <Text style={ theme.components.Subtitle.style }>Communities:</Text>
                         <Text style={ styles.text }>Select the community you want to check.</Text>
-                        <CustomPicker control={control} name={'community'} selectedValue={0} display_name={['id', 'name']} options={user.communities}/>
+                        <CustomPicker control={control} name={'community'} selectedValue={communitySelected.id} display_name={['id', 'name']} options={user.communities}/>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <CustomButton size='xs' cancel title={'Cerrar'} onPressed={() => {setCommunitySelectModal(false)}}>Cancel</CustomButton>
                             <CustomButton size='xs' title={'Cerrar'} onPressed={handleSubmit(selectCommunity)}>Select</CustomButton>
