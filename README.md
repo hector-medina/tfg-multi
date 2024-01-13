@@ -17,12 +17,32 @@ Community es una aplicación multiplataforma desarrollada en React Native con un
 <!-- ABOUT THE PROJECT -->
 ## Demo
 <p style = 'text-align:center;'>
-  <img src="./docs/IMG_8709.PNG" alt="JuveYell" height="300px">
-  <img src="./docs/IMG_8705.PNG" alt="JuveYell" height="300px">
-  <img src="./docs/IMG_8708.PNG" alt="JuveYell" height="300px">
-  <img src="./docs/IMG_8706.PNG" alt="JuveYell" height="300px">
-  <img src="./docs/IMG_8707.PNG" alt="JuveYell" height="300px">
+  <img src="./docs/IMG_8709.PNG" alt="community" height="300px">
+  <img src="./docs/IMG_8705.PNG" alt="community" height="300px">
+  <img src="./docs/IMG_8708.PNG" alt="community" height="300px">
+  <img src="./docs/IMG_8706.PNG" alt="community" height="300px">
+  <img src="./docs/IMG_8707.PNG" alt="community" height="300px">
 </p>
+
+Para acceder al demo se requiere un terminal móvil y tener instalada la aplicación `Expo Go`. 
+
+### Versión iOS
+
+Accede a [exp://u.expo.dev/update/c1665fa1-e223-480d-a297-46ceb450bf67] o escanea el siguiente código.
+
+<p style = 'text-align:center;'>
+  <img src="./docs/demo-ios.png" alt="demo-ios-qr-code" height="200px">
+</p>
+
+### Versión Android
+
+Accede a [exp://u.expo.dev/update/139b0251-5f02-480e-afbe-1d1234ce3e76] o escanea el siguiente código.
+
+<p style = 'text-align:center;'>
+  <img src="./docs/demo-android.png" alt="demo-ios-qr-code" height="200px">
+</p>
+
+
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
