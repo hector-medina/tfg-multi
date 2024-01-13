@@ -28,7 +28,7 @@ Para acceder al demo se requiere un terminal móvil y tener instalada la aplicac
 
 ### Versión iOS
 
-Accede a [exp://u.expo.dev/update/c1665fa1-e223-480d-a297-46ceb450bf67] o escanea el siguiente código.
+Accede a `exp://u.expo.dev/update/c1665fa1-e223-480d-a297-46ceb450bf67` o escanea el siguiente código.
 
 <p style = 'text-align:center;'>
   <img src="./docs/demo-ios.png" alt="demo-ios-qr-code" height="200px">
@@ -36,7 +36,7 @@ Accede a [exp://u.expo.dev/update/c1665fa1-e223-480d-a297-46ceb450bf67] o escane
 
 ### Versión Android
 
-Accede a [exp://u.expo.dev/update/139b0251-5f02-480e-afbe-1d1234ce3e76] o escanea el siguiente código.
+Accede a `exp://u.expo.dev/update/139b0251-5f02-480e-afbe-1d1234ce3e76` o escanea el siguiente código.
 
 <p style = 'text-align:center;'>
   <img src="./docs/demo-android.png" alt="demo-ios-qr-code" height="200px">
