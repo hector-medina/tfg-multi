@@ -9,11 +9,11 @@ Community es una aplicación multiplataforma desarrollada en React Native con un
 ## Tabla de contenido
 
 <ol>
-  <li><a href="#demo">Demo</a</li>
-  <li><a href="#entorno-desarrollo">Entorno de desarrollo</a</li>
-  <li><a href="#uso">Uso</a</li>
-  <li><a href="#licencia">Licencia</a</li>
-  <li><a href="#contacto">Contacto</a</li>
+  <li>Demo</li>
+  <li>Entorno de desarrollo</a</li>
+  <li>Uso</li>
+  <li>Licencia</li>
+  <li>Contacto</li>
 </ol>
 
 <!-- ABOUT THE PROJECT -->
