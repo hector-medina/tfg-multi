@@ -74,7 +74,10 @@ const NotificationsScreen = ({navigation}) => {
                     );
                 })
 
-                : null
+                : 
+                <View style={[theme.components.Card.style, styles.card_no_notifications]}>            
+                    <Text style={styles.text_no_notifications}>There is no notifications.</Text>
+                </View>
             }
         </ScrollView>
     );
@@ -82,6 +85,16 @@ const NotificationsScreen = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
+    text_no_notifications: {
+        fontSize: 16,
+        alignSelf: 'flex-start',
+        fontWeight: 'normal'
+    },
+    card_no_notifications:{
+        marginVertical: 10,
+        marginHorizontal: 10,
+        borderRadius: 15, 
+    },
     container: {
         paddingVertical: 20,
         paddingHorizontal: 20,

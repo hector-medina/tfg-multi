@@ -189,7 +189,7 @@ const DetailMessagesScreen = ({route, navigation}) => {
                         />
                         </View>
                             <CustomButton onPressed={handleSubmit(sendMessage)}>
-                                <Icon style={{fontSize: 20, padding: 5}} name="send"/>
+                                <Icon style={{fontSize: 20, padding: 5, color:'white'}} name="send"/>
                             </CustomButton>
                     </View>
                 </View>

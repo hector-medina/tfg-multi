@@ -74,7 +74,9 @@ const MessagesScreen = ({navigation}) => {
             console.log(data);
             setUser(data);
             setListUsersModal(false)
-            navigation.navigate('detailmessages', {'chat_id': data.id})
+            var index = data.participants[0].id == user_id ? 1 : 0;
+            const recipient_display_name = data.participants[index].first_name != '' ? data.participants[index].first_name + " " +data.participants[index].last_name : data.participants[index].username;
+            navigation.navigate('detailmessages', {'chat_id': data.id, 'recipient_display_name':  recipient_display_name})
         } catch(error){
             console.log(error);
             setListUsersModal(false)
@@ -120,7 +122,7 @@ const MessagesScreen = ({navigation}) => {
                 user.chats != undefined && user.chats.length != 0 ? user.chats.map((chat) => {
 
                 participant = chat.participants[0].id == user_id ? chat.participants[1] : chat.participants[0];            
-                recipient_display_name = participant != undefined && participant.first_name == '' ? participant.first_name + " " +participant.last_name : participant.username;
+                recipient_display_name = participant != undefined && participant.first_name != '' ? participant.first_name + " " +participant.last_name : participant.username;
 
                 return (
 

@@ -95,7 +95,10 @@ return (
             <View style={{ paddingHorizontal: 20}}w>
                 <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
                     <Text style={[styles.title]}>Property</Text>
-                    <CustomButton size='xs' onPressed={ () => { navigation.navigate('editproperty', {property_id: property_id, property_name: property.name}) } }>Edit</CustomButton>
+                    {
+                        (user_id == community.admin || user_id == community.president ) &&
+                        <CustomButton size='xs' onPressed={ () => { navigation.navigate('editproperty', {property_id: property_id, property_name: property.name}) } }>Edit</CustomButton>
+                    }
                 </View>
 
                 <View style={[theme.components.Card.style, {marginBottom: 0, marginHorizontal: 0}]}>
@@ -113,7 +116,10 @@ return (
 
                 <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
                     <Text style={[styles.title]}>Owner</Text>
-                    <CustomButton size='xs' onPressed={ () => { navigation.navigate('editpropertyowner', {property_id: property_id, owner_id: owner.id}) } }>Edit</CustomButton>
+                    {
+                        (user_id == community.admin || user_id == community.president ) &&
+                        <CustomButton size='xs' onPressed={ () => { navigation.navigate('editpropertyowner', {property_id: property_id, owner_id: owner.id}) } }>Edit</CustomButton>
+                    }
                 </View>
 
                 <View style={[theme.components.Card.style, {marginBottom: 0, marginHorizontal: 0}]}>

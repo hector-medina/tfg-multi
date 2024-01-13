@@ -92,12 +92,16 @@ const AccountScreen = ({route, navigation}) => {
             </View>
 
             <View style={[theme.components.Card.style, styles.card]}>            
-                <FlatList
-                    data={bankAccount.records}
-                    renderItem={itemList}
-                    keyExtractor={item => item.id}
-                    ItemSeparatorComponent={Separador}
-                    />
+                {
+                    bankAccount.records.length != 0 ?
+                    <FlatList
+                        data={bankAccount.records}
+                        renderItem={itemList}
+                        keyExtractor={item => item.id}
+                        ItemSeparatorComponent={Separador}
+                        />
+                    : <Text style={styles.text}>There is no records in this account</Text>
+                }
             </View>
         </ScrollView>
     );
@@ -122,6 +126,11 @@ const styles = StyleSheet.create({
         color: 'red',
         fontSize: 16,
         fontWeight: 'bold'
+    },
+    text: {
+        fontSize: 16,
+        alignSelf: 'flex-start',
+        fontWeight: 'normal'
     },
 });
 

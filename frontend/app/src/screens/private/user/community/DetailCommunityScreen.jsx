@@ -71,20 +71,23 @@ const DetailCommunityScreen = ({route, navigation}) => {
                     
                         <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
                             <Text style={[styles.title]}>Communities</Text>
-                            <CustomButton size='xs' onPressed={ () => { navigation.navigate('editcommunity',{community_id: community.id, community_name: community.name, community_address: community.address, bankaccount_name: bankaccount.name, bankaccount_number: bankaccount.number }) } }>Edit</CustomButton>
+                            {
+                                (user_id == community.admin || user_id == community.president ) &&
+                                <CustomButton size='xs' onPressed={ () => { navigation.navigate('editcommunity',{community_id: community.id, community_name: community.name, community_address: community.address, bankaccount_name: bankaccount.name, bankaccount_number: bankaccount.number }) } }>Edit</CustomButton>
+                            }
                         </View>
                         
                         <View style={[theme.components.Card.style, {marginBottom: 0, marginHorizontal: 0}]}>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                                 <View>
                                     <Text style={{color: 'gray', fontSize: 16, fontWeight: 'bold'}}>Name: </Text>
-                                    <Text style={{color: 'gray', fontSize: 16, fontWeight: 'bold'}}>Address: </Text>
                                     <Text style={{color: 'gray', fontSize: 16, fontWeight: 'bold'}}>Created at: </Text>
+                                    <Text style={{color: 'gray', fontSize: 16, fontWeight: 'bold'}}>Address: </Text>
                                 </View>
                                 <View style={{flexShrink:1, alignItems: 'flex-end'}}>
-                                    <Text style={{color: 'gray', fontSize: 16}}> {community.name}</Text>
-                                    <Text style={{color: 'gray', fontSize: 16}}> {community.address}</Text>
-                                    <Text style={{color: 'gray', fontSize: 16}}> {community.creation_date}</Text>
+                                    <Text style={{color: 'gray', fontSize: 16}}>{community.name}</Text>
+                                    <Text style={{color: 'gray', fontSize: 16}}>{community.creation_date}</Text>
+                                    <Text style={{color: 'gray', fontSize: 16}}>{community.address}</Text>
                                 </View>
                             </View>
                             <Text style={ [theme.components.Subtitle.style, styles.field_title ] }>Bank account:</Text>
@@ -104,7 +107,10 @@ const DetailCommunityScreen = ({route, navigation}) => {
                         
                         <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
                             <Text style={[styles.title]}>Managers</Text>
-                            <CustomButton size='xs' onPressed={ () => { navigation.navigate('editmanagers',{community_id: community.id, admin_id: admin.id, president_id: president.id}) } }>Edit</CustomButton>
+                            {
+                                (user_id == community.admin || user_id == community.president ) &&
+                                <CustomButton size='xs' onPressed={ () => { navigation.navigate('editmanagers',{community_id: community.id, admin_id: admin.id, president_id: president.id}) } }>Edit</CustomButton>
+                            }
                         </View>
                         <View style={[theme.components.Card.style, {marginBottom: 0, marginHorizontal: 0}]}>
                             <Text style={ [theme.components.Subtitle.style, styles.field_title ] }>Administrator:</Text>
@@ -142,7 +148,10 @@ const DetailCommunityScreen = ({route, navigation}) => {
                         <View style={{marginBottom: 20}}>
                         <View style={{ marginTop: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
                             <Text style={[styles.title]}>Properties</Text>
-                            <CustomButton size='xs' onPressed={ () => { navigation.navigate('addproperty',{community_id: community.id}) } }>Add</CustomButton>
+                            {
+                                (user_id == community.admin || user_id == community.president ) &&
+                                <CustomButton size='xs' onPressed={ () => { navigation.navigate('addproperty',{community_id: community.id}) } }>Add</CustomButton>
+                            }
                         </View>
                             { community.properties.length == 0 ?
                                 <View style={ styles.small_card_container }>
