@@ -128,7 +128,7 @@ const DetailNotificationsScreen = ({route, navigation}) => {
             </View>
 
             {    
-                community.admin == user_id || community.president == user_id &&
+                ( community.admin == user_id || community.president == user_id ) &&
                 <View style={ [theme.components.Card.style] }>
                     <Text style={ [theme.components.Subtitle.style, styles.danger] }>Danger zone:</Text>
 
