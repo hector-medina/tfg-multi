@@ -67,7 +67,7 @@ const DetailAgreementScreen = ({route, navigation}) => {
                 entity={'agreement \''+agreement_name+'\''} 
                 modalVisible={confirmDeleteModalVisible} 
                 onCancel={() => {setConfirmDeleteModalVisible(false)}}
-                onConfirm={() => {deleteCommunity()}}/>
+                onConfirm={() => {deleteAgreement()}}/>
         }
 
         { fetchErrors != null &&
