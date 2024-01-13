@@ -1,36 +1,20 @@
 # Community
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 Este repositorio contiene el desarrollo del TFG (Trabajo Final de Grado) de los estudios de Grado en Ingeniería Informática impartido en la Universitat Oberta de Catalunya (UOC).
 
 Community es una aplicación multiplataforma desarrollada en React Native con un backend basado en Django Rest Framework.
 
-## Descripción
+## Tabla de contenido
 
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h1 align="center">Community</h1>
-
-  <p align="center">
-    Gestión de comunidades de vecinos.
-</div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
+<ol>
+  <li><a href="#demo">Demo</a</li>
+  <li><a href="#dependencias">Dependencias</a</li>
+  <li><a href="#entorno-desarrollo">Entorno de desarrollo</a</li>
+</ol>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -49,8 +33,6 @@ Community es una aplicación multiplataforma desarrollada en React Native con un
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
-
 
 
 <!-- ABOUT THE PROJECT -->
