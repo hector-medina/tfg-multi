@@ -17,10 +17,11 @@ Community es una aplicación multiplataforma desarrollada en React Native con un
 <!-- ABOUT THE PROJECT -->
 ## Demo
 <p style = 'text-align:center;'>
-<img src="./docs/IMG_8705.PNG" alt="JuveYell" width="300px">
-<img src="./docs/IMG_8705.PNG" alt="JuveYell" width="300px">
-<img src="./docs/IMG_8705.PNG" alt="JuveYell" width="300px">
-<img src="./docs/IMG_8705.PNG" alt="JuveYell" width="300px">
+  <img src="./docs/IMG_8709.PNG" alt="JuveYell" height="300px">
+  <img src="./docs/IMG_8705.PNG" alt="JuveYell" height="300px">
+  <img src="./docs/IMG_8708.PNG" alt="JuveYell" height="300px">
+  <img src="./docs/IMG_8706.PNG" alt="JuveYell" height="300px">
+  <img src="./docs/IMG_8707.PNG" alt="JuveYell" height="300px">
 </p>
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
