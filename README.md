@@ -1,5 +1,4 @@
 # Community
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 Este repositorio contiene el desarrollo del TFG (Trabajo Final de Grado) de los estudios de Grado en Ingeniería Informática impartido en la Universitat Oberta de Catalunya (UOC).
@@ -43,8 +42,6 @@ Accede a `exp://u.expo.dev/update/139b0251-5f02-480e-afbe-1d1234ce3e76` o escane
 <p style = 'text-align:center;'>
   <img src="./docs/demo-android.png" alt="demo-ios-qr-code" height="200px">
 </p>
-
-
 
 ## Entorno de desarrollo
 
@@ -99,18 +96,31 @@ En el directorio del proyecto `/frontend/app`
 npx expo start
 ````
 
-### Uso.
+## Uso.
 
+### Backend
 
-## License
+Una vez se tiene el contenedor docker funcionando, podemos ver los logs en la terminal del sistema y tener acceso a un servidor de desarrollo de Django Rest Framework al acceder a [http://localhost](http://localhost). 
 
-Distributed under the MIT License. 
+Si se accede con el navegador nos encontraremos con una lista de los endpoint creados y además se podrán crear registros en la base de datos, así como actualizarlos y listarlos. Si se quiere entrar como administrador, se deberá crear un usuario admin:
 
+````
+docker exec -it <ID_CONTENEDOR> bash
+cd app
+python manage.py createsuperuser
+````
 
+### Frontend
 
+Para la parte frontend deberemos escanear el código QR que aparece en la terminal una vez ejecutamos el comando `npx expo start`.
 
-<!-- CONTACT -->
-## Contact
+Es importante destacar que el servidor de desarrollo debe ser alcanzable por red, es decir que el dispositivo móvil deberá encontrarse en la red LAN idealmente.
+
+## Licencia
+
+Esta obra está sujeta a una licencia de Reconocimiento-NoComercial-SinObraDerivada. [by-nc-nd cc](https://creativecommons.org/licenses/by-nc-nd/3.0/es/)
+
+## Contacto
 
 Hector Mario Medina Cabanelas
 
@@ -118,8 +128,5 @@ Linkedin: [https://www.linkedin.com/in/hector-medina-cabanelas/](https://www.lin
 
 Email: hector.medina.cabanelas@gmail.com
 
-
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: /LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/hector-medina-cabanelas/
