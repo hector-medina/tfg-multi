@@ -37,7 +37,7 @@ const HomeScreen = ({navigation}) => {
         navigation.setOptions({ 
             headerTitle: communitySelected.name,
             headerRight: () => (
-                communitySelected.id != 0 ? 
+                communitySelected != null && communitySelected.id != 0 ? 
                 <CustomButton navbar size="xs" 
                 onPressed={() => {setCommunitySelectModal(true)}}>
                         <Icon style={styles.icon_navbar} name='angle-down'/>
@@ -104,8 +104,6 @@ const HomeScreen = ({navigation}) => {
         setFetchErrors(null);
     }
 
-    console.log(bankAccount)
-
     return (
         <ScrollView>
             <Modal transparent={true} visible={communitySelectModal} onRequestClose={() => {setCommunitySelectModal(false)}}>
@@ -115,8 +113,8 @@ const HomeScreen = ({navigation}) => {
                         <Text style={ styles.text }>Select the community you want to check.</Text>
                         <CustomPicker control={control} name={'community'} selectedValue={0} display_name={['id', 'name']} options={user.communities}/>
                         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <CustomButton size='xs' cancel title={'Cerrar'} onPressed={() => {setCommunitySelectModal(false)}}>Cancelar</CustomButton>
-                            <CustomButton size='xs' title={'Cerrar'} onPressed={handleSubmit(selectCommunity)}>Seleccionar</CustomButton>
+                            <CustomButton size='xs' cancel title={'Cerrar'} onPressed={() => {setCommunitySelectModal(false)}}>Cancel</CustomButton>
+                            <CustomButton size='xs' title={'Cerrar'} onPressed={handleSubmit(selectCommunity)}>Select</CustomButton>
                         </View>
                     </View>
                 </View>   

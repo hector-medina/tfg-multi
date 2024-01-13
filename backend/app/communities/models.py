@@ -19,7 +19,6 @@ class Neighborhood(models.Model):
 
 class BankAccount(models.Model):
     name = models.CharField(max_length=200)
-    # balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     number = models.CharField(max_length=24, validators=[MinLengthValidator(24)])
 
     def __str__(self):

@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from communities.serializers import NeighborhoodSerializer
 from properties.serializers import PropertySerializer
 from communities.models import Neighborhood
+from chats.serializers import ChatSerializer
 
 
 class UserImageSerializer(serializers.ModelSerializer):
@@ -18,6 +19,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     communities = serializers.SerializerMethodField()
     properties = serializers.SerializerMethodField()
+    chats = ChatSerializer(many=True, read_only=True)
 
     class Meta:
         model = User
@@ -31,7 +33,8 @@ class UserSerializer(serializers.ModelSerializer):
                   'address',
                   'communities',
                   'properties',
-                  'image',)
+                  'image',
+                  'chats')
     
     def get_communities(self, user):
         communities_admin = user.communities_admin.all()

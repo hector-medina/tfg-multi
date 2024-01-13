@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'accounts',
     'properties',
     'communities',
+    'chats',
+    'notifications',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +143,26 @@ REST_FRAMEWORK = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'hector': {  # Reemplaza 'your_app_name' con el nombre de tu aplicación
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }
+# # How to enable logging in Django This in the breakpoint
+# import logging
+# import pdb
+# logger = logging.getLogger('hector')
+# pdb.set_trace()

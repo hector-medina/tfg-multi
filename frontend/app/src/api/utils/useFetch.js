@@ -1,4 +1,7 @@
-const BACKEND_URL = 'http://192.168.100.17'; 
+
+import Constants from 'expo-constants';
+
+const BACKEND_URL = Constants.expoConfig.extra.API_URL; 
 
 const isObjectEmpty = (objectName) => {
     return Object.keys(objectName).length === 0
