@@ -1,4 +1,5 @@
 import { createTheme } from '@rneui/themed';
+import { Platform } from 'react-native';
 
 export const Colors = {
   primary: '#4BC29C',
