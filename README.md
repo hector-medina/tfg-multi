@@ -10,6 +10,7 @@ Community es una aplicación multiplataforma desarrollada en `React Native` con 
 <ol>
   <li>Demo</li>
   <li>Entorno de desarrollo</a</li>
+  <li>Pruebas</li>
   <li>Uso</li>
   <li>Licencia</li>
   <li>Contacto</li>
@@ -29,7 +30,7 @@ Para acceder al demo se requiere un terminal móvil y tener instalada la aplicac
 
 ### Versión iOS
 
-Accede a `exp://u.expo.dev/update/c1665fa1-e223-480d-a297-46ceb450bf67` o escanea el siguiente código.
+Accede a `exp://u.expo.dev/update/641c63fc-019e-4453-a0b7-4c946a0fc456` o escanea el siguiente código.
 
 <p style = 'text-align:center;'>
   <img src="./docs/demo-ios.png" alt="demo-ios-qr-code" height="200px">
@@ -37,7 +38,7 @@ Accede a `exp://u.expo.dev/update/c1665fa1-e223-480d-a297-46ceb450bf67` o escane
 
 ### Versión Android
 
-Accede a `exp://u.expo.dev/update/139b0251-5f02-480e-afbe-1d1234ce3e76` o escanea el siguiente código.
+Accede a `exp://u.expo.dev/update/619ac609-6070-44d3-8f1f-6e6652e476c7` o escanea el siguiente código.
 
 <p style = 'text-align:center;'>
   <img src="./docs/demo-android.png" alt="demo-ios-qr-code" height="200px">
@@ -95,6 +96,21 @@ En el directorio del proyecto `/frontend/app`
 ````
 npx expo start
 ````
+## Pruebas.
+
+Con el objetivo de proporcionar un software de mayor calidad y estable, se ha decidido utilizar `jest` como herramienta de test.
+
+Para comprobar el estado de las pruebas debemos ejecutar el siguiente comando en el directorio `/frontend/app`:
+
+````
+npm test
+````
+
+Y obtenendremos un resultado como de la siguiente imagen.
+
+<p style = 'text-align:center;'>
+  <img src="./docs/tests.png" alt="tests con jest" height="200px">
+</p>
 
 ## Uso.
 
