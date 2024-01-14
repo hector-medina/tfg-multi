@@ -6,13 +6,14 @@ import theme from "../../theme";
 const Loading = ({title, message, modalVisible = true}) => {
 
     return (
+        modalVisible &&
         <View>
             <Modal transparent={true} visible={modalVisible}>
-                <View style={styles.card_container}>
+                <View testID="loading-container" style={styles.card_container}>
                     <View style={[theme.components.Card.style]}>
                     {title && <Text style={[theme.components.Subtitle.style, styles.title]}>{title}</Text>}
                     {message && <Text style={styles.text}>{message}</Text>}
-                    <ActivityIndicator  size="large" color={theme.lightColors.primary} />
+                    <ActivityIndicator testID="activity-indicator" size="large" color={theme.lightColors.primary} />
                     </View>
                 </View>
             </Modal>
