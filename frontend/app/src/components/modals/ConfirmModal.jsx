@@ -7,9 +7,10 @@ import CustomButton from "../buttons/CustomButton";
 const ConfirmModal = ({entity, modalVisible = true, onCancel, onConfirm}) => {
 
     return (
+        modalVisible &&
         <View>
             <Modal transparent={true} visible={modalVisible} onRequestClose={() => onClose()}>
-                <View style={styles.card_container}>
+                <View testID="confirm-modal" style={styles.card_container}>
                     <View style={[theme.components.Card.style]}>
                     <Text style={[theme.components.Subtitle.style, styles.title]}>Warning!</Text>
                         <View style={styles.text_container}>
